@@ -1,0 +1,1 @@
+const Ticket = require('../models/ticketModel')
