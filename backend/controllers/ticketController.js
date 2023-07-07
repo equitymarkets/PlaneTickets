@@ -32,13 +32,43 @@ const createTicket = async (req, res) => {
     }
 }
 // update a ticket
+const updateTicket = async (req, res) => {
+    const { id } = req.params
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such workout'})
+    }
+    const ticket = await Ticket.findOneAndUpdate({ _id: id }, {
+        ...req.body
+    })
+    if(!ticket) {
+        return res.status(400).json({error: 'No such workout'})
+    }
+    res.status(200).json(ticket)
 
+}
 // delete a ticket
+const deleteTicket = async (req, res) => {
+    const { id } = req.params
 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such workout'})
+    }
+
+    const ticket = await Ticket.findOneAndDelete({ _id: id })
+    
+    if(!ticket) {
+        return res.status(400).json({error: 'No such workout'})
+    }
+
+    res.status(200).json(ticket)
+
+}
 
 
 module.exports = {
     getTickets,
     getTicket,
-    createTicket
+    createTicket,
+    deleteTicket,
+    updateTicket
 }

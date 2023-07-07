@@ -2,7 +2,9 @@ const express = require('express')
 const {
     createTicket,
     getTickets,
-    getTicket
+    getTicket,
+    deleteTicket,
+    updateTicket
 } = require('../controllers/ticketController')
 
 //create router
@@ -14,16 +16,12 @@ router.get('/', getTickets)
 //get a single workout
 router.get('/:id', getTicket)
 
-// Note dummy values, change appropriately
+
 router.post('/', createTicket)
 
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE a ticket'})
-})
+router.delete('/:id', deleteTicket)
 
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE a new ticket'})
-})
+router.patch('/:id', updateTicket)
 
 
 module.exports = router 
