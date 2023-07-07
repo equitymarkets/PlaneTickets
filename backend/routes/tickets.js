@@ -1,30 +1,21 @@
 const express = require('express')
-
+const {
+    createTicket,
+    getTickets,
+    getTicket
+} = require('../controllers/ticketController')
 
 //create router
 const router = express.Router()
 
 //get all tickets
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all tickets'})
-} )
+router.get('/', getTickets)
 
 //get a single workout
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET a single ticket'})
-})
+router.get('/:id', getTicket)
 
 // Note dummy values, change appropriately
-router.post('/', async (req, res) => {
-    const {title, load, reps} = req.body
-    try {
-        const ticket = await Ticket.create({title, load, reps}) 
-        res.status(200).json(ticket)  
-        }
-    catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
+router.post('/', createTicket)
 
 router.delete('/:id', (req, res) => {
     res.json({mssg: 'DELETE a ticket'})
