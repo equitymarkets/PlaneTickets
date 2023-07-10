@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import TicketDetails from '../components/TicketDetails'
+import TicketForm from "../components/TicketForm" 
 
 const Home = () => {
     const [tickets, setTickets] = useState(null)
@@ -27,6 +28,7 @@ const Home = () => {
                     <TicketDetails key={ticket._id} ticket={ticket}/>
                 ))}
             </div>
+            <TicketForm />
         </div>
     )
 }
