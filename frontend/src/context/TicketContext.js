@@ -1,21 +1,30 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer } from 'react'
 
 export const TicketsContext = createContext()
 
-export const ticketsReducer = () => {
-    
+export const ticketsReducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_WORKOUTS':
+      return { 
+        tickets: action.payload 
+      }
+    case 'CREATE_WORKOUT':
+      return { 
+        tickets: [action.payload, ...state.tickets] 
+      }
+    default:
+      return state
+  }
 }
 
 export const TicketsContextProvider = ({ children }) => {
-    const [ state, dispatch ] = useReducer(ticketsReducer, {
-        tickets: null
-    })
-
-    // dispatch({type: 'SET_WORKOUTS', payload: [{}, {}]})
-
-    return (
-        <TicketsContext.Provider value={}>
-           { children }
-        </TicketsContext.Provider>
-    )
+  const [state, dispatch] = useReducer(ticketsReducer, { 
+    tickets: null
+  })
+  
+  return (
+    <TicketsContext.Provider value={{ ...state, dispatch }}>
+      { children }
+    </TicketsContext.Provider>
+  )
 }
