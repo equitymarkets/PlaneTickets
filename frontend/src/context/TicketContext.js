@@ -12,6 +12,10 @@ export const ticketsReducer = (state, action) => {
       return { 
         tickets: [action.payload, ...state.tickets] 
       }
+    case 'DELETE_WORKOUT':
+      return { 
+        tickets: state.tickets.filter(w => w._id !== action.payload._id) 
+      }
     default:
       return state
   }
