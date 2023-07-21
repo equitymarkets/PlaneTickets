@@ -23,5 +23,4 @@ router.delete('/:id', deleteTicket)
 
 router.patch('/:id', updateTicket)
 
-
 module.exports = router 
