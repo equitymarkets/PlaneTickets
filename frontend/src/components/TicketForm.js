@@ -41,7 +41,7 @@ const TicketForm = () => {
 
   return (
     <form className="create" onSubmit={handleSubmit}> 
-      <h3>Add a New Workout</h3>
+      <h2>Add a New Ticket</h2>
 
       <label>Excersize Title:</label>
       <input 
