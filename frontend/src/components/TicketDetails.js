@@ -1,10 +1,7 @@
-// export default TicketDetails
-
 import { useTicketsContext } from '../hooks/useTicketsContext'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-
 const TicketDetails = ({ ticket }) => {
   const { dispatch } = useTicketsContext()
 
@@ -22,7 +19,7 @@ const TicketDetails = ({ ticket }) => {
   return (
     <div className="ticket-details">
       <h4>{ticket.title}</h4>
-      <p><strong>Load (kg): </strong>{ticket.load}</p>
+      <p><strong>Fuel Price (L): </strong>{ticket.load}</p>
       <p><strong>Number of reps: </strong>{ticket.reps}</p>
       <p>{formatDistanceToNow(new Date(ticket.createdAt), { addSuffix: true })}</p>
       <span className="material-symbols-outlined" onClick={handleClick}>delete</span>

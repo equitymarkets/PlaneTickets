@@ -39,6 +39,7 @@ const TicketForm = () => {
 
   }
 
+  
   return (
     <form className="create" onSubmit={handleSubmit}> 
       <h2>Add a New Ticket</h2>
@@ -51,7 +52,7 @@ const TicketForm = () => {
         className={emptyFields.includes('title') ? 'error' : ''}
       />
 
-      <label>Load (in kg):</label>
+      <label>Fuel Price (L):</label>
       <input 
         type="number" 
         onChange={(e) => setLoad(e.target.value)} 
